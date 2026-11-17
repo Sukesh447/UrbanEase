@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: './', // Ensures relative assets work on GitHub Pages, custom domains, or subdirectories like /UrbanEase/
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Home, MapPin, PlusCircle, Car, ShieldAlert, BarChart3, User, Globe2 } from 'lucide-react';
 import { useAppStore } from '@/store/appStore';
 import { CITY_CONFIG } from '@/config/city.config';
+import logoImg from '@/assets/logo.jpg';
 
 export const Navbar: React.FC = () => {
   const { language, setLanguage, currentUser, setRole, isMobileDeviceFrame, toggleMobileDeviceFrame, toggleDemoDrawer, t } =
@@ -11,20 +12,24 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-2.5 shadow-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Brand */}
+        {/* Brand with Official Logo */}
         <div className="flex items-center gap-3">
-          <NavLink to="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-              <span className="font-black text-lg tracking-tighter">UE</span>
+          <NavLink to="/" className="flex items-center gap-2.5 group">
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
+              <img src={logoImg} alt="UrbanEase Logo" className="w-full h-full object-cover" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-slate-900 tracking-tight text-lg">UrbanEase</span>
+                <span className="font-black text-slate-900 tracking-tight text-xl leading-none">
+                  Urban<span className="text-emerald-600">Ease</span>
+                </span>
                 <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
                   {language === 'ta' ? CITY_CONFIG.nameTamil : CITY_CONFIG.name}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 hidden sm:block -mt-0.5">{t('appTagline')}</p>
+              <p className="text-[10px] font-medium text-slate-500 hidden sm:block mt-0.5 tracking-tight">
+                Simplifying Cities, Empowering Communities
+              </p>
             </div>
           </NavLink>
         </div>
@@ -139,7 +144,7 @@ export const Navbar: React.FC = () => {
           {/* Floating Demo Scenarios Launcher */}
           <button
             onClick={toggleDemoDrawer}
-            className="px-3 py-1 text-xs rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-sm shadow-blue-500/30 flex items-center gap-1.5 transition-transform active:scale-95"
+            className="px-3 py-1 text-xs rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-sm shadow-blue-500/30 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-300 animate-ping" />
             <span className="hidden sm:inline">⚡ Demo Hub</span>
